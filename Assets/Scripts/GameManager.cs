@@ -11,9 +11,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private TMP_InputField playerNameInput;
+    [SerializeField]
+    private TextMeshProUGUI playerScoreText;
+    [SerializeField]
+    private TextMeshProUGUI playerHealthText;
     private string playerName { get; set; }
-    private int playerScore { get; set; }
-
+    private int playerScore { get; set; }    
+    private int playerHealth { get; set; }
     private GameData gameData { get; set; }
     void Awake()
     {
@@ -25,6 +29,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        // ABSTRACTION
         LoadGameData();
     }
     [System.Serializable]
@@ -33,6 +38,7 @@ public class GameManager : MonoBehaviour
         public string playerName;
         public int playerScore;
     }
+    // ABSTRACTION
     public void SaveGameData()
     {
         GameData data = new GameData();
@@ -41,6 +47,7 @@ public class GameManager : MonoBehaviour
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
+    // ABSTRACTION
     public void LoadGameData()
     {
         string path = Application.persistentDataPath + "/savefile.json";
@@ -52,6 +59,31 @@ public class GameManager : MonoBehaviour
             gameData = data;
         }
     }
+    public void HitByEnemy(int damage)
+    {
+        playerHealth -= damage;
+        playerHealthText.text = "Health: " + playerHealth;
+    }
+    public void AddPlayerHealth(int health)
+    {
+        playerHealth += health;
+        playerHealthText.text = "Health: " + playerHealth;
+    }
+    public void SetPlayerHealth(int health)
+    {
+        playerHealth = health;
+        playerHealthText.text = "Health: " + playerHealth;
+    }
+    public int GetPlayerHealth()
+    {
+        return playerHealth;
+    }
+    public void AddScore(int score)
+    {
+        playerScore += score;
+        playerScoreText.text = "Score: " + playerScore;
+    }
+    // ABSTRACTION
     bool IsPlayerNameSet()
     {
         if (playerNameInput.text.Length > 0)
@@ -67,6 +99,7 @@ public class GameManager : MonoBehaviour
     }
     public void Play()
     {
+        // ABSTRACTION
         if (IsPlayerNameSet())
         {
             SceneManager.LoadScene(1);
