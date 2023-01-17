@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7136094263292540768}
   - component: {fileID: 7136094263292540769}
   - component: {fileID: 7136094263292540797}
+  - component: {fileID: 9157809099349360057}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -113,3 +114,19 @@ MonoBehaviour:
   projectile: {fileID: 6045107576622554145, guid: 9d3d91e00e311834195e605650d3d9cb, type: 3}
   speed: 10
   phasesDisplayText: {fileID: 0}
+--- !u!54 &9157809099349360057
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136094263292540774}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 8
+  m_CollisionDetection: 0

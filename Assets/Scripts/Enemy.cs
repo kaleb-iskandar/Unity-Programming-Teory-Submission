@@ -7,11 +7,13 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private int Health = 1;
     [SerializeField]
-    protected float Speed = 5f;
+    private float Speed = 5f;
     [SerializeField]
     private int score = 1;
-    private float Lifetime = 10.0f;
+    [SerializeField]
+    private float Lifetime = 8.0f;
 
+    // POLYMORPHISM // INHERITANCE
     public virtual void Move()
     {
         transform.Translate(Vector3.down * Speed * Time.deltaTime);
@@ -20,13 +22,23 @@ public class Enemy : MonoBehaviour
     void Start()
     {
     }
+    // ENCAPSULATION
     public void SetHealth(int health)
     {
         this.Health = health;
     }
+    public int GetHealth()
+    {
+        return this.Health;
+    }
+    // ENCAPSULATION
     public void SetSpeed(float speed)
     {
         this.Speed = speed;
+    }
+    public float GetSpeed()
+    {
+        return this.Speed;
     }
     // Update is called once per frame
     void Update()

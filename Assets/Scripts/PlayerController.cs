@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         InvokeRepeating(nameof(Shoot), 2, 0.5f);
+        GameManager.Instance.SetPlayerHealth(100);
     }
     void Update()
     {

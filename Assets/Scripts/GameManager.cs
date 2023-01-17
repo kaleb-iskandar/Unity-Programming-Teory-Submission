@@ -13,9 +13,10 @@ public class GameManager : MonoBehaviour
     private TMP_InputField playerNameInput;
     [SerializeField]
     private TextMeshProUGUI playerScoreText;
-    private string playerName { get; set; }
-    private int playerScore { get; set; }
     [SerializeField]
+    private TextMeshProUGUI playerHealthText;
+    private string playerName { get; set; }
+    private int playerScore { get; set; }    
     private int playerHealth { get; set; }
     private GameData gameData { get; set; }
     void Awake()
@@ -61,6 +62,17 @@ public class GameManager : MonoBehaviour
     public void HitByEnemy(int damage)
     {
         playerHealth -= damage;
+        playerHealthText.text = "Health: " + playerHealth;
+    }
+    public void AddPlayerHealth(int health)
+    {
+        playerHealth += health;
+        playerHealthText.text = "Health: " + playerHealth;
+    }
+    public void SetPlayerHealth(int health)
+    {
+        playerHealth = health;
+        playerHealthText.text = "Health: " + playerHealth;
     }
     public int GetPlayerHealth()
     {
